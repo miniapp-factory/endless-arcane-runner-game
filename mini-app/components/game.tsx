@@ -40,6 +40,7 @@ export default function Game() {
     const cubeY = () => (gravity === 1 ? 400 - cubeSize - 10 : 10);
 
     const update = (dt: number) => {
+      if (gameOver) return;
       // Move obstacles
       setObstacles((prev) =>
         prev
@@ -127,6 +128,7 @@ export default function Game() {
           cubeRect.y + cubeRect.height > o.y
         ) {
           setGameOver(true);
+          setObstacles([]);
           return;
         }
       }
