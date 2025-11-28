@@ -32,3 +32,9 @@
 
 # 2025-11-28 14:15:27.139111
 +drastically reduce the initial game speed again. Cut the current speed in half to make the game much easier and more relaxed to start. Ensure the obstacle spacing adjusts to this slower pace so the game remains playable.
+
+# 2025-11-28 14:35:04.946802
++fix the Game Over logic. The score counter currently keeps increasing after death, so make it stop immediately upon collision. Also, ensure that all existing obstacles are cleared and removed from the screen the moment the game ends, leaving a clean view for the Game Over message.
+
+# 2025-11-28 14:35:04.947160
++fix the Game Over logic. The score counter currently keeps increasing after death, so make it stop immediately upon collision. Also, ensure that all existing obstacles are cleared and removed from the screen the moment the game ends, leaving a clean view for the Game Over message.
