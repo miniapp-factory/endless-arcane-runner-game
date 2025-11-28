@@ -17,6 +17,19 @@ export default function Game() {
   const [gravity, setGravity] = useState(1); // 1 = floor, -1 = ceiling
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [speed, setSpeed] = useState(2);
+  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateSize = () => {
+      setCanvasSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   // Handle click to flip gravity
   useEffect(() => {
@@ -151,8 +164,8 @@ export default function Game() {
     <div className="relative w-full h-screen bg-black">
       <canvas
         ref={canvasRef}
-        width={window.innerWidth}
-        height={window.innerHeight}
+        width={canvasSize.width}
+        height={canvasSize.height}
         className="block"
       />
       {gameOver && (
