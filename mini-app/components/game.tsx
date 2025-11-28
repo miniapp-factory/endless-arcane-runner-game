@@ -152,7 +152,7 @@ export default function Game() {
     setGameOver(false);
     setGravity(1);
     setObstacles([]);
-    setSpeed(0.5);
+    setSpeed(0.25);
   };
 
   return (
