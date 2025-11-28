@@ -16,7 +16,7 @@ export default function Game() {
   const [gameOver, setGameOver] = useState(false);
   const [gravity, setGravity] = useState(1); // 1 = floor, -1 = ceiling
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
-  const [speed, setSpeed] = useState(2);
+  const [speed, setSpeed] = useState(0.5);
 
   // Handle click to flip gravity
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Game() {
 
     let lastTime = performance.now();
     let obstacleTimer = 0;
-    let obstacleInterval = 1500; // ms
+    let obstacleInterval = 800; // ms
 
     const cubeSize = 30;
     const cubeY = () => (gravity === 1 ? 400 - cubeSize - 10 : 10);
@@ -52,13 +52,19 @@ export default function Game() {
       if (obstacleTimer > obstacleInterval) {
         obstacleTimer = 0;
         const isTop = Math.random() < 0.5;
-        const obstacle: Obstacle = {
+        const obstacle1: Obstacle = {
           x: canvas.width,
           y: isTop ? 10 : 400 - 10 - 20,
           width: 20,
           height: 20,
         };
-        setObstacles((prev) => [...prev, obstacle]);
+        const obstacle2: Obstacle = {
+          x: canvas.width,
+          y: isTop ? 400 - 10 - 20 : 10,
+          width: 20,
+          height: 20,
+        };
+        setObstacles((prev) => [...prev, obstacle1, obstacle2]);
       }
 
       // Increase speed over time
@@ -144,12 +150,12 @@ export default function Game() {
     setGameOver(false);
     setGravity(1);
     setObstacles([]);
-    setSpeed(2);
+    setSpeed(0.5);
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
-      <canvas
+      <canvas style={{ border: "8px solid", borderColor: "#0ff", boxShadow: "0 0 20px 5px #0ff" }}
         ref={canvasRef}
         width={800}
         height={400}
