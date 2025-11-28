@@ -17,19 +17,6 @@ export default function Game() {
   const [gravity, setGravity] = useState(1); // 1 = floor, -1 = ceiling
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [speed, setSpeed] = useState(2);
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const updateSize = () => {
-      setCanvasSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-    updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   // Handle click to flip gravity
   useEffect(() => {
@@ -50,7 +37,7 @@ export default function Game() {
     let obstacleInterval = 1500; // ms
 
     const cubeSize = 30;
-    const cubeY = () => (gravity === 1 ? canvas.height - cubeSize - 10 : 10);
+    const cubeY = () => (gravity === 1 ? 400 - cubeSize - 10 : 10);
 
     const update = (dt: number) => {
       // Move obstacles
@@ -67,7 +54,7 @@ export default function Game() {
         const isTop = Math.random() < 0.5;
         const obstacle: Obstacle = {
           x: canvas.width,
-          y: isTop ? 10 : canvas.height - 10 - 20,
+          y: isTop ? 10 : 400 - 10 - 20,
           width: 20,
           height: 20,
         };
@@ -161,11 +148,11 @@ export default function Game() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-black">
+    <div className="flex items-center justify-center min-h-screen bg-black">
       <canvas
         ref={canvasRef}
-        width={canvasSize.width}
-        height={canvasSize.height}
+        width={800}
+        height={400}
         className="block"
       />
       {gameOver && (
