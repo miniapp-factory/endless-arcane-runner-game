@@ -26,3 +26,9 @@
 
 # 2025-11-28 13:50:17.672982
 +add a thick, glowing neon border around the canvas to clearly define the game boundaries. Significantly reduce the initial game speed to make the gameplay more accessible and less frantic at the start. To balance the slower speed, increase the frequency and density of the obstacles, ensuring there are enough hazards to dodge without making it impossible.
+
+# 2025-11-28 14:15:27.138767
++drastically reduce the initial game speed again. Cut the current speed in half to make the game much easier and more relaxed to start. Ensure the obstacle spacing adjusts to this slower pace so the game remains playable.
+
+# 2025-11-28 14:15:27.139111
++drastically reduce the initial game speed again. Cut the current speed in half to make the game much easier and more relaxed to start. Ensure the obstacle spacing adjusts to this slower pace so the game remains playable.
