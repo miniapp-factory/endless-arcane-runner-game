@@ -16,7 +16,7 @@ export default function Game() {
   const [gameOver, setGameOver] = useState(false);
   const [gravity, setGravity] = useState(1); // 1 = floor, -1 = ceiling
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
-  const [speed, setSpeed] = useState(0.5);
+  const [speed, setSpeed] = useState(0.25);
 
   // Handle click to flip gravity
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Game() {
 
     let lastTime = performance.now();
     let obstacleTimer = 0;
-    let obstacleInterval = 800; // ms
+    let obstacleInterval = 600; // ms
 
     const cubeSize = 30;
     const cubeY = () => (gravity === 1 ? 400 - cubeSize - 10 : 10);
